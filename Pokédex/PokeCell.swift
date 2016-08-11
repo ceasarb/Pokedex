@@ -14,11 +14,13 @@ class PokeCell: UICollectionViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     
     override func awakeFromNib() {
+        
         self.layer.cornerRadius = 5.0
     }
     
     
     func configureCell(_ pokemon: Pokemon) {
+        
         nameLabel.text = pokemon.name.capitalized
         thumbImage.image = UIImage(named: "\(pokemon.pokedexId)")
         
