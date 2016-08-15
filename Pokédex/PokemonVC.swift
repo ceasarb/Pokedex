@@ -138,12 +138,13 @@ class PokemonVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
-        view.endEditing(true)
+        searchBar.resignFirstResponder()
     }
+    
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
-        if searchBar.text == nil || searchBar.text == "" {
+        if searchBar.text == nil || searchText.characters.count == 0 {
             
             inSearchMode = false
             collectionView.reloadData()
@@ -159,6 +160,12 @@ class PokemonVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
             collectionView.reloadData()
         }
     }
+    
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        searchBar.endEditing(true)
+    }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "PokemonDetailVC" {
